@@ -8,7 +8,7 @@ class DaySchema(BaseModel):
     start: time
     end: time
 
-    @field_validator("date", mode='before')
+    @field_validator("date", mode="before")
     @classmethod
     def parse_date(cls, value):
         if isinstance(value, str):
@@ -18,7 +18,7 @@ class DaySchema(BaseModel):
                 raise ValueError("Date must be in YYYY-MM-DD format") from exc
         return value
 
-    @field_validator("start", "end", mode='before')
+    @field_validator("start", "end", mode="before")
     @classmethod
     def parse_time(cls, value):
         if isinstance(value, str):
@@ -28,7 +28,7 @@ class DaySchema(BaseModel):
                 raise ValueError("Time must be in HH:MM format") from exc
         return value
 
-    @field_validator("end", mode='after')
+    @field_validator("end", mode="after")
     @classmethod
     def check_time_order(cls, end_time, values):
         start_time = values.data.get("start")

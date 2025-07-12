@@ -4,6 +4,7 @@ from fastapi import HTTPException
 from schemas import DaySchema, TimeSlotSchema, ScheduleSchema
 from utils import get_settings
 
+
 async def get_schedule() -> ScheduleSchema:
     async with aiohttp.ClientSession() as session:
         req = await session.get(get_settings().URL)

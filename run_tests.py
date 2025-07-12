@@ -10,7 +10,7 @@ import pytest
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 
-def main(): # pragma: no cover
+def main():  # pragma: no cover
     """
     Основная функция для запуска тестов
     """
@@ -37,5 +37,5 @@ def main(): # pragma: no cover
     return exit_code
 
 
-if __name__ == "__main__": # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
     sys.exit(main())

@@ -4,6 +4,7 @@ from uvicorn import run
 from utils import SettingsBase, get_settings
 from api import list_of_routes
 
+
 def bind_routes(application: FastAPI, setting: SettingsBase) -> None:
     """
     Bind all routes to application.

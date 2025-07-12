@@ -1,14 +1,18 @@
 # pylint: disable=redefined-outer-name
 # pylint: disable=unused-argument
+# pylint: disable=wrong-import-position
+import os
+import sys
 from unittest.mock import Mock, AsyncMock
 import pytest
 from fastapi.testclient import TestClient
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from main import get_app
 
 
 @pytest.fixture
-def client():
+def client():  # pragma: no cover
     """
     Returns a client that can be used to interact with the application.
     """
@@ -17,7 +21,7 @@ def client():
 
 
 @pytest.fixture
-def mock_schedule_data():
+def mock_schedule_data():  # pragma: no cover
     """
     Fixture with test schedule data.
     """
@@ -34,7 +38,7 @@ def mock_schedule_data():
 
 
 @pytest.fixture
-def mock_http_session():
+def mock_http_session():  # pragma: no cover
     """
     Fixture for mocking HTTP session.
     """
@@ -50,7 +54,7 @@ def mock_http_session():
 
 
 @pytest.fixture
-def mock_settings():
+def mock_settings():  # pragma: no cover
     """
     Fixture for mocking settings.
     """

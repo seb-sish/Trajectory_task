@@ -1,7 +1,10 @@
 from schemas import DaySchema, TimeSlotSchema, IntervalSchema
 from schemas.interval import IsFreeIntervalSchema
 
-def find_free_intervals(day: DaySchema, day_slots: list[TimeSlotSchema]) -> list[IntervalSchema]:
+
+def find_free_intervals(
+    day: DaySchema, day_slots: list[TimeSlotSchema]
+) -> list[IntervalSchema]:
     free_intervals = []
     if day_slots:
         day_slots.sort(key=lambda x: x.start)
@@ -17,10 +20,13 @@ def find_free_intervals(day: DaySchema, day_slots: list[TimeSlotSchema]) -> list
         free_intervals.append(IntervalSchema(start=day.start, end=day.end))
     return free_intervals
 
+
 def interval_has_intersections(
-    target: IntervalSchema,
-    day_slots: list[TimeSlotSchema]
+    target: IntervalSchema, day_slots: list[TimeSlotSchema]
 ) -> IsFreeIntervalSchema:
-    overlaps = [slot for slot in day_slots
-                if target.overlaps(IntervalSchema(start=slot.start, end=slot.end))]
+    overlaps = [
+        slot
+        for slot in day_slots
+        if target.overlaps(IntervalSchema(start=slot.start, end=slot.end))
+    ]
     return IsFreeIntervalSchema(is_free=not bool(overlaps), overlaps=overlaps)
